@@ -1,0 +1,12 @@
+{
+  "defaults": {
+    "colorScheme": "Campbell",
+    "elevate": true,
+    "font": {
+      "face": "<FONT_NAME>",
+      "size": 12
+    },
+    "opacity": 80,
+    "useAcrylic": true
+  }
+}

@@ -1,0 +1,13 @@
+// Place your key bindings in this file to override the defaultsauto[]
+[
+	{
+		"key": "ctrl+n f",
+		"command": "explorer.newFile",
+		"when": "explorerViewletFocus"
+	},
+	{
+		"key": "ctrl+n d",
+		"command": "explorer.newFolder",
+		"when": "explorerViewletFocus"
+	}
+]

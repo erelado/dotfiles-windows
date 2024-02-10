@@ -1,0 +1,28 @@
+{
+	"actions": [
+		{
+			"command": "newTab",
+			"keys": "ctrl+t"
+		},
+		{
+			"command": "closePane",
+			"keys": "ctrl+w"
+		},
+		{
+			"command": {
+				"action": "splitPane",
+				"split": "right",
+				"splitMode": "duplicate"
+			},
+			"keys": "alt+shift+h"
+		},
+		{
+			"command": {
+				"action": "splitPane",
+				"split": "down",
+				"splitMode": "duplicate"
+			},
+			"keys": "alt+shift+v"
+		}
+	]
+}

@@ -1,0 +1,169 @@
+# espanso match file
+
+# For a complete introduction, visit the official docs at: https://espanso.org/docs/
+
+# You can use this file to define the base matches (aka snippets)
+# that will be available in every application when using espanso.
+
+# Matches are substitution rules: when you type the "trigger" string
+# it gets replaced by the "replace" string.
+matches:
+  # Simple text replacement
+  # - trigger: ":espanso"
+  #   replace: "Hi there!"
+
+  # # NOTE: espanso uses YAML to define matches, so pay attention to the indentation!
+
+  # # But matches can also be dynamic:
+
+  # # Print the current date
+  # - trigger: ":date"
+  #   replace: "{{mydate}}"
+  #   vars:
+  #     - name: mydate
+  #       type: date
+  #       params:
+  #         format: "%d/%m/%Y"
+
+  # # Print the output of a shell command
+  # - trigger: ":shell"
+  #   replace: "{{output}}"
+  #   vars:
+  #     - name: output
+  #       type: shell
+  #       params:
+  #         cmd: "echo 'Hello from your shell'"
+
+  # And much more! For more information, visit the docs: https://espanso.org/docs/
+
+  # Outputs date & time
+  - triggers: [":today", ":date"]
+    replace: "{{mydate}}"
+    vars:
+      - name: mydate
+        type: date
+        params:
+          format: "%d %B, %Y"
+
+  - triggers: [":ftoday", ":fdate"]
+    replace: "{{mytime}}"
+    vars:
+      - name: mytime
+        type: date
+        params:
+          format: "%v"
+
+  - triggers: [":היום", ":תאריך"]
+    replace: "{{mydate}}"
+    vars:
+      - name: mydate
+        type: date
+        params:
+          format: "%d %B, %Y"
+          locale: "he-IL"
+
+  - triggers: [":פהיום", ":פתאריך"]
+    replace: "{{mytime}}"
+    vars:
+      - name: mytime
+        type: date
+        params:
+          format: "%v"
+          locale: "he-IL"
+
+  - triggers: [":time", ":זמן", ":שעה"]
+    replace: "{{mytime}}"
+    vars:
+      - name: mytime
+        type: date
+        params:
+          format: "%H:%M"
+  
+  # Outputs mobile phone number
+  - triggers: [":mbl", ":נייד", ":טלפון", "05012"]
+    replace: "0501234567"
+
+  - trigger: ":g-mbl"
+    replace: "(+972) 50-123-4567"
+
+    # Outputs personal information
+  - triggers: [":id", ":תז", "1234"]
+    replace: "123456789"
+
+  # Outputs emails
+  - trigger: "@@p"
+    replace: "example@gmail.com"
+
+  - trigger: "@@u"
+    replace: "example@uni.ac.il"
+
+  # Auto close brackets, quotes and formatting, and put cursor in center
+  - trigger: ':('
+    replace: '($|$)'
+  - trigger: ':['
+    replace: '[$|$]'
+  - trigger: ':{'
+    replace: '{$|$}'
+
+# ASCII Arrows
+  - triggers: [":>>", "-->", "=>", ":rarr"]
+    replace: "→"
+  - triggers: [":<<", "<--", "<=", ":larr"]
+    replace: "←"
+  - triggers: ["^^", ":uarr"]
+    replace: "↑"
+  - triggers: ["vv", ":darr"]
+    replace: "↓"
+  - triggers: ["<>", ":lrarr"]
+    replace: "⟷"
+
+# Commonly Used Emojis
+  - triggers: [":heart", ":love"]
+    replace: '❤️'
+  - triggers: [":brokenh", ":ohno"]
+    replace: '💔'
+  - triggers: [":wink", ";))"]
+    replace: '😉'
+  - triggers: [":kiss", ":*"]
+    replace: '😘'
+  - triggers: [":happy", ":smile", ":))"]
+    replace: '😀'
+  - triggers: [":sad", ":(("]
+    replace: '☹️'
+  - triggers: [":cry", ":tear", ":'("]
+    replace: '😢'
+  - triggers: [":laugh", ":lol"]
+    replace: '😂'
+  - triggers: [":oops", ":awkward", ":hehe"]
+    replace: '🤭'
+  - triggers: [":P", ":tongue", ":jk"]
+    replace: '😜'
+  - triggers: [">.>", ":fine", ":pff", ":ugh"]
+    replace: '😒'
+  - triggers: [">v>", ":flirt"]
+    replace: '😏'
+  - triggers: [":thumbup", ":np"]
+    replace: '👍'
+  - triggers: [":crossing", ":hope", ":holdingf"]
+    replace: '🤞'
+  - triggers: [":pointup", ":lookup"]
+    replace: '☝️'
+  - triggers: [":shrug", ":dk"]
+    replace: '🤷‍'
+  - trigger: ':snob'
+    replace: '💁‍♂️'
+
+
+# Common Currency Symbols
+  - triggers: [':eur', ':איר']
+    replace: '€'
+  - triggers: [':gbp', ':לישט']
+    replace: '£'
+  - triggers: [':nis', ':שח', ':שקל']
+    replace: '₪'
+  - trigger: ':btc'
+    replace: '฿'
+  - trigger: ':eth'
+    replace: 'Ξ'
+  - triggers: ['(c)', ':copyright:']
+    replace: '©'
