@@ -20,8 +20,8 @@ function Initialize-BasicTools {
         $_.Install = (Approve-YesNoQuestion -Question "Would you like to install $($_.Name)?")
 
         if ($_.Install) {
-            if ($_.Sources.Keys.Count -gt 1) { $_.SelectedSource = (Select-FromArrayOptions -Array $_.Sources.Keys) }
-            else { $_.SelectedSource = ($_.Sources.Keys)[0] }
+            if ($_.Sources.Keys.Count -gt 1) { $_.SelectedSource = (Select-FromArrayOptions -Array $_.Sources.Keys) } # let the user choose
+            else { $_.SelectedSource = ($_.Sources.Keys)[0] } # select the only source available
         }
     }
 

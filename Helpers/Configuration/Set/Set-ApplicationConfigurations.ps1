@@ -19,57 +19,53 @@ function Set-ApplicationConfigurations {
     )
 
     foreach ($AppCategory in $JSON_Data.Applications.PSObject.Properties) {
-        
-        if ($AppCategory.Value -is [array]) {
-            $AppCategory.Value | ForEach-Object {
-                if ($_.Install) {
-                    $AppName = $_.Name
-                    $Source = $_.SelectedSource
-                    $AppId = $_.Sources.$Source
-                    Install-WingetApp -AppName $AppName -AppId $AppId -Source $Source
+        $AppCategory.Value | ForEach-Object {
+
+            $AppName = $_.Name
+
+            if ($_.Install) {
+                $Source = $_.SelectedSource
+                $AppId = $_.Sources.$Source
+                Install-WingetApp -AppName $AppName -AppId $AppId -Source $Source
+            }
+
+            # Other Apps – specific configurations
+            $Configurations = $_.Configurations
+            if ($Configurations) {
+                switch ($AppName.ToLower()) {
+                    "espanso" {
+                        if ($Configurations.SetConfigs) { Set-EspansoConfiguration }
+
+                        break
+                    }
+                    "git" {
+                        if (-not [string]::IsNullOrEmpty($Configurations.Globals.User_Name)) {
+                            # Reload environment variables
+                            Update-EnvironmentVariables
+            
+                            # Set configurations
+                            Set-GitConfiguration -UserName $Configurations.Globals.User_Name `
+                                -UserEmail $Configurations.Globals.User_Email
+                        }
+
+                        break
+                    }
+                    "visual studio code" {
+                        if ($Configurations.InstallExtensions) { Install-VSCodeExtensions }
+                        if ($Configurations.SetCustomSettings) { Set-VSCodeConfiguration }
+
+                        break
+                    }
+                    "windows terminal" {
+                        if ($Configurations.SetCustomSettings) {
+                            $SelectedNerdFont = $JSON_Data.OS.Windows.Fonts.NerdFont.FontName
+                            Set-WindowsTerminalConfiguration -NerdFontName $SelectedNerdFont
+                        }
+
+                        break
+                    }
+
                 }
-            }
-            continue
-        }
-
-        if ($AppCategory.Value.Install) {
-            $AppName = $AppCategory.Value.Name
-            $Source = $AppCategory.Value.SelectedSource
-            $AppId = $AppCategory.Value.Sources.$Source
-            Install-WingetApp -AppName $AppName -AppId $AppId -Source $Source
-        }
-        
-        switch ($AppCategory.Name.ToLower()) {
-            "espanso" {
-                if ($AppCategory.Value.Configurations.SetConfigs) { Set-EspansoConfiguration }
-
-                break
-            }
-            "git" {
-                if (-not [string]::IsNullOrEmpty($AppCategory.Value.Configurations.Globals.User_Name)) {
-                    # Reload environment variables
-                    Update-EnvironmentVariables
-                    
-                    # Set configurations
-                    Set-GitConfiguration -UserName $AppCategory.Value.Configurations.Globals.User_Name `
-                        -UserEmail $AppCategory.Value.Configurations.Globals.User_Email
-                }
-
-                break
-            }
-            "vscode" {
-                if ($AppCategory.Value.Configurations.InstallExtensions) { Install-VSCodeExtensions }
-                if ($AppCategory.Value.Configurations.SetCustomSettings) { Set-VSCodeConfiguration }
-
-                break
-            }
-            "windowsterminal" {
-                if ($AppCategory.Value.Configurations.SetCustomSettings) {
-                    $SelectedNerdFont = $JSON_Data.OS.Windows.Fonts.NerdFont.FontName
-                    Set-WindowsTerminalConfiguration -NerdFontName $SelectedNerdFont
-                }
-
-                break
             }
         }
     }

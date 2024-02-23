@@ -28,10 +28,7 @@ function New-ConfigurationFile {
         'Applications' = @(
             'Basic Tools',
             'DevOps Tools',
-            'Espanso',
-            'Git',
-            'VSCode',
-            'WindowsTerminal'
+            'Other Apps'
         )
         'OS'           = @(
             "Windows"

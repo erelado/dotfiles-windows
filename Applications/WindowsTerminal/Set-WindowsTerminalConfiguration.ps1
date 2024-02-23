@@ -46,7 +46,7 @@ function Set-WindowsTerminalConfiguration() {
     Write-Host "Updated custom actions."
 	
     # Set profile defaults
-    if ($null -eq $NerdFontName) { $FontName = "Cascadia Mono" } else { $FontName = "$($NerdFontName) Nerd Font Mono" }
+    if (-not [string]::IsNullOrEmpty($NerdFontName)) { $FontName = "$($NerdFontName) Nerd Font Mono" }  else { $FontName = "Cascadia Mono" }
     (Get-Content -Path $ProfileDefaultsPath) -replace "<FONT_NAME>", $FontName | Set-Content -Path $ProfileDefaultsPath
     Write-Host "Updated the default font to: ${FontName}"
     Write-Host "Updated profile defaults."

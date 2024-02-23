@@ -90,7 +90,7 @@ You will be given the option to select which source to use if there are multiple
 
 #### Shell
 
-- [PowerShell Core](https://docs.microsoft.com/en-us/powershell/scripting) _(winget, msstore)_
+- [PowerShell Core](https://docs.microsoft.com/en-us/powershell/scripting) _(winget, <span style="color: red">msstore - currently broken; issue: [#9278](https://github.com/PowerShell/PowerShell/issues/9278)</span>)_
   - `$PROFILE` configuration
     - _Optional: Removing selected sections not to be installed_
   - Modules installation
