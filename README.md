@@ -1,4 +1,4 @@
-# E-RELevant's dotfiles for Windows
+# .dotfiles for Windows
 
 PowerShell 'dotfiles' for Windows, including common application installations through `winget`, as well as developer-friendly Windows configuration defaults.
 
