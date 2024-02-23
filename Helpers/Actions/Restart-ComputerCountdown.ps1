@@ -1,9 +1,9 @@
 function Restart-ComputerCountdown {
     param (
         [Parameter(Position = 0, Mandatory = $FALSE)]
-        [PSDefaultValue(Help = "10")]
+        [PSDefaultValue(Help = "30")]
         [Int]
-        $Seconds = 10
+        $Seconds = 30
     )
 
     <#
@@ -11,7 +11,7 @@ function Restart-ComputerCountdown {
     Restarts the computer after a countdown.
 
     .DESCRIPTION
-    After a countdown (default: 10 seconds) restarts the computer.
+    After a countdown (default: 30 seconds) restarts the computer.
 
     .PARAMETER Seconds
     Specifies the amount of seconds to countdown prior to the restart.
@@ -22,6 +22,11 @@ function Restart-ComputerCountdown {
     
 
     Write-Host "The process has finished." -ForegroundColor "Yellow"
+    Write-Host ""
+    Write-Host "The configuration of the machine is almost complete."
+    Write-Host "Restarting the machine in 30 seconds will ensure that the new settings take effect."
+    Write-Host ""
+    Write-Host "You can cancel it by pressing Ctrl+C."
 
     $Length = $Seconds / 100
     For ($Seconds; $Seconds -gt 0; $Seconds--) {
