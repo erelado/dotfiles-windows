@@ -28,6 +28,8 @@ function Restart-ComputerCountdown {
     Write-Host ""
     Write-Host "You can cancel it by pressing Ctrl+C."
 
+    Stop-Transcript
+
     $Length = $Seconds / 100
     For ($Seconds; $Seconds -gt 0; $Seconds--) {
         $Minutes = [int](([string]($Seconds / 60)).split('.')[0])

@@ -19,6 +19,8 @@ function Set-Configurations {
     Write-ProcessingAnimation { Start-Sleep 5 }
     Write-Host $("*" * 72) -ForegroundColor "Yellow"
 
+    Start-Transcript -Path "$DotfilesDirectory\dotfiles_windows_log_$(Get-Date -format 'yyyy-MM-dd_HH-mm-ss')).txt"
+
     Set-ApplicationConfigurations -JSON_Data $ConfigurationData
 
     Set-OSConfigurations -JSON_Data $ConfigurationData
