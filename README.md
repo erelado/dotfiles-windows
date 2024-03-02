@@ -10,7 +10,7 @@ PowerShell 'dotfiles' for Windows, including common application installations th
 Open any Windows PowerShell 5.1 _(or later)_ host console with administrator rights, and run:
 
 ```posh
-$GitHubRepositoryAuthor = "E-RELevant"; `
+$GitHubRepositoryAuthor = "erelado"; `
 $GitHubRepositoryName = "dotfiles-windows"; `
 Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass; `
 Invoke-Expression (Invoke-RestMethod -Uri "https://raw.githubusercontent.com/$($GitHubRepositoryAuthor)/$($GitHubRepositoryName)/main/Download.ps1");
