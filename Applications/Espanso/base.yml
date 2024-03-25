@@ -97,25 +97,24 @@ matches:
   - trigger: "@@u"
     replace: "example@uni.ac.il"
 
-  # Auto close brackets, quotes and formatting, and put cursor in center
-  - trigger: ':('
-    replace: '($|$)'
-  - trigger: ':['
-    replace: '[$|$]'
-  - trigger: ':{'
-    replace: '{$|$}'
-
 # ASCII Arrows
-  - triggers: [":>>", "-->", "=>", ":rarr"]
-    replace: "→"
-  - triggers: [":<<", "<--", "<=", ":larr"]
+  - triggers: [":<<", "<--", ":rarr"]
     replace: "←"
-  - triggers: ["^^", ":uarr"]
+  - triggers: [":>>", "-->", ":larr"]
+    replace: "→"
+  - triggers: [":^^", ":uarr"]
     replace: "↑"
-  - triggers: ["vv", ":darr"]
+  - triggers: [":vv", ":darr"]
     replace: "↓"
-  - triggers: ["<>", ":lrarr"]
+  - triggers: ["<->", ":lrarr"]
     replace: "⟷"
+
+# Punctuation Rules
+  - triggers: [":--", " - "]
+    replace: " – "
+
+  - regex: "(?P<heb_letter>[א-ת])-"
+    replace: "{{heb_letter}}־"
 
 # Commonly Used Emojis
   - triggers: [":heart", ":love"]
@@ -142,7 +141,7 @@ matches:
     replace: '😒'
   - triggers: [">v>", ":flirt"]
     replace: '😏'
-  - triggers: [":thumbup", ":np"]
+  - triggers: [":thumbsup", ":np", ":like"]
     replace: '👍'
   - triggers: [":crossing", ":hope", ":holdingf"]
     replace: '🤞'
@@ -150,9 +149,8 @@ matches:
     replace: '☝️'
   - triggers: [":shrug", ":dk"]
     replace: '🤷‍'
-  - trigger: ':snob'
+  - triggers: [":snob", ":sassy"]
     replace: '💁‍♂️'
-
 
 # Common Currency Symbols
   - triggers: [':eur', ':איר']
