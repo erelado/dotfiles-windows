@@ -113,14 +113,10 @@ matches:
   - triggers: [":--", " - "]
     replace: " – "
 
-  - regex: "(?P<heb_letter>[א-ת])-"
-    replace: "{{heb_letter}}־"
+  - regex: (?P<heb_letter1>[א-ת])-(?P<heb_letter2>[א-ת])
+    replace: "{{heb_letter1}}־{{heb_letter2}}"
 
 # Commonly Used Emojis
-  - triggers: [":heart", ":love"]
-    replace: '❤️'
-  - triggers: [":brokenh", ":ohno"]
-    replace: '💔'
   - triggers: [":wink", ";))"]
     replace: '😉'
   - triggers: [":kiss", ":*"]
@@ -141,12 +137,26 @@ matches:
     replace: '😒'
   - triggers: [">v>", ":flirt"]
     replace: '😏'
+  - triggers: [":yessir", ":salute"]
+    replace: '🫡'
   - triggers: [":thumbsup", ":np", ":like"]
     replace: '👍'
   - triggers: [":crossing", ":hope", ":holdingf"]
     replace: '🤞'
   - triggers: [":pointup", ":lookup"]
     replace: '☝️'
+  - triggers: [":strong", ":power"]
+    replace: '💪'
+  - triggers: [":thanks", ":clap"]
+    replace: '🙏'
+  - triggers: [":heart", ":love"]
+    replace: '❤️'
+  - triggers: [":brokenh", ":ohno"]
+    replace: '💔'
+  - triggers: [":crown", ":king", ":queen"]
+    replace: '👑'
+  - triggers: [":eyes"]
+    replace: '👀'
   - triggers: [":shrug", ":dk"]
     replace: '🤷‍'
   - triggers: [":snob", ":sassy"]
