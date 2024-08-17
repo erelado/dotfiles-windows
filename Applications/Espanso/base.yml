@@ -113,8 +113,8 @@ matches:
   - triggers: [":--", " - "]
     replace: " – "
 
-  - regex: (?P<heb_letter1>[א-ת])-(?P<heb_letter2>[א-ת])
-    replace: "{{heb_letter1}}־{{heb_letter2}}"
+  - regex: "(?P<heb_letter>[א-ת])-"
+    replace: "{{heb_letter}}־"
 
 # Commonly Used Emojis
   - triggers: [":wink", ";))"]
